@@ -21,7 +21,7 @@ stages:
         buildContext: $(Build.Repository.LocalPath)
         repository: $(webRepository)
         dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
-        containerRegistry: 'Container Registry Connection'
+        containerRegistry: 'tailspin'
         tags: |
           $(tag)
 
@@ -39,5 +39,5 @@ stages:
     - task: AzureWebAppContainer@1
       inputs:
        appName: $(WebAppName)
-       azureSubscription: 'Resource Manager - Tailspin - Space Game'
+       azureSubscription: 'Azure EDRM'
        imageName: $(RegistryName)/$(webRepository):$(build.buildId)
